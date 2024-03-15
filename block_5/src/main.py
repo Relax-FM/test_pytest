@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Dict
 
 
 class RequestType(Enum):
@@ -9,17 +10,18 @@ class RequestType(Enum):
 
 
 class ApiRequest:
-    def __init__(self, payload, request_type):
+    def __init__(self, payload: Dict, request_type: str):
         self.payload = payload
         if not hasattr(RequestType, request_type):
             raise TypeError('Vse ploho deneg net')
-        self.request_type = RequestType()
+        self.request_type = RequestType(request_type)
 
-    def set_payload(self, new_payload):
+    def set_payload(self, new_payload: Dict):
         self.payload = new_payload
+        return self.payload
 
     def get_payload(self):
         return self.payload
 
     def get_type(self):
-        return self.payload
+        return self.request_type.value
