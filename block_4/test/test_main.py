@@ -1,16 +1,21 @@
 import pytest
 from block_4.src.main import *
+from contextlib import nullcontext as ex_not_raise
+import pytest
 
 
 @pytest.mark.parametrize(
-    ["s1", "s2", "res"],
+    ["s1", "s2", "res", "ex"],
     [
-        ("Хочу на", "шину", "Хочу на шину"),
-        ("Когда можно", "просить повышение?", "Когда можно просить повышение?"),
-        ("Когда можно", "стать начальником Умалата?", "Когда можно стать начальником Умалата?"),
+        ("Хочу на ", "шину", "Хочу на шину", ex_not_raise()),
+        ("Когда можно ", "просить повышение?", "Когда можно просить повышение?", ex_not_raise()),
+        ("Когда можно ", "стать начальником Умалата?", "Когда можно стать начальником Умалата?", ex_not_raise()),
+        ("string1", "string2", "string1string2", ex_not_raise()),
+        (1555, "string2", "", pytest.raises(TypeError)),
+        ("string1", 1234, "", pytest.raises(TypeError)),
+        (4321, 1234, "", pytest.raises(TypeError)),
     ]
 )
-def test_concatenation(s1, s2, res):
-    result = concatenation(s1, s2)
-    print("\n" + result)
-    assert result == res
+def test_concatenation(s1, s2, res, ex):
+    with ex:
+        assert concatenation(s1, s2) == res
