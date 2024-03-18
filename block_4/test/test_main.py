@@ -7,9 +7,9 @@ import pytest
 @pytest.mark.parametrize(
     ["s1", "s2", "res", "ex"],
     [
-        ("Хочу на ", "шину", "Хочу на шину", ex_not_raise()),
-        ("Когда можно ", "просить повышение?", "Когда можно просить повышение?", ex_not_raise()),
-        ("Когда можно ", "стать начальником Умалата?", "Когда можно стать начальником Умалата?", ex_not_raise()),
+        ("Hello", "World", "HelloWorld", ex_not_raise()),
+        ("te", "st", "test", ex_not_raise()),
+        ("", "", "", ex_not_raise()),
         ("string1", "string2", "string1string2", ex_not_raise()),
         (1555, "string2", "", pytest.raises(TypeError)),
         ("string1", 1234, "", pytest.raises(TypeError)),
