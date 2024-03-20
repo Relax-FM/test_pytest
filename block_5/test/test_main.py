@@ -3,7 +3,7 @@ from contextlib import nullcontext as ex_not_raise
 from block_5.src.main import ApiRequest
 
 
-class TestApiRequest:
+class Test_ApiRequest:
     @pytest.mark.parametrize(
         ["type", "payload", "res", "expect"],
         [
