@@ -50,9 +50,9 @@ input_json = """
 }
 """
 
-try:
-    pet = Pet.parse_raw(input_json)
-except ValueError as e:
-    print('Ex : ', e)
-else:
-    print(pet.json())
+# try:
+#     pet = Pet.parse_raw(input_json)
+# except ValueError as e:
+#     print('Ex : ', e)
+# else:
+#     print(pet.json())
