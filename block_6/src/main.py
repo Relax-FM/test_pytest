@@ -54,6 +54,31 @@ base_json = """
 }
 """
 
+unbase_json = """
+{
+  "id": 5556665565,
+  "category": {
+    "id": 1,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
+"""
+
 base_pet = Pet.parse_raw(base_json)
 base_header = {"Content-Type": "application/json", "accept": "application/json"}
 base_status = Status(status = 'sold')
+
+
+unbase_pet = Pet.parse_raw(unbase_json)
+unbase_status = Status(status = 'solid')
