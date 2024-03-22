@@ -2,6 +2,10 @@ from enum import Enum
 from pydantic import BaseModel, field_validator
 
 
+class Status(BaseModel):
+    status: str
+
+
 class Category(BaseModel):
     id: int
     name: str
@@ -29,11 +33,11 @@ class Pet(BaseModel):
 
 
 
-input_json = """
+base_json = """
 {
-  "id": 1,
+  "id": 5556665565,
   "category": {
-    "id": 0,
+    "id": 1,
     "name": "string"
   },
   "name": "doggie",
@@ -50,9 +54,6 @@ input_json = """
 }
 """
 
-# try:
-#     pet = Pet.parse_raw(input_json)
-# except ValueError as e:
-#     print('Ex : ', e)
-# else:
-#     print(pet.json())
+base_pet = Pet.parse_raw(base_json)
+base_header = {"Content-Type": "application/json", "accept": "application/json"}
+base_status = Status(status = 'sold')
